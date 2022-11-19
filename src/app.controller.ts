@@ -23,13 +23,13 @@ export class AppController {
   }
 
   @Post()
-  crear(@Body('datos') datos: Persona): Persona {
+  crear(@Body() datos: Persona): Persona {
     this.personas.push(datos);
     return datos;
   }
 
   @Put(":id")
-  modificar(@Body('datos') datos: Persona, @Param('id') id: number): Persona | string {
+  modificar(@Body() datos: Persona, @Param('id') id: number): Persona | string {
     try{
     this.personas[id] = datos
     return this.personas[id];
