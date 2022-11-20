@@ -1,5 +1,5 @@
-import { Person } from "./person";
+import { Person } from "./person.model";
 
 export class Player extends Person {
-   team: string = "No definido";
+   team: string;
 }

@@ -1,44 +1,38 @@
-import { Injectable } from '@nestjs/common';
-import { Player } from '../models/player.model';
+import { Player } from "../models/player.model";
 
-@Injectable()
-export class PlayerService {
+export interface PlayerService {
 
-  private player: Player[] = [{
-    name: 'Leo',
-    lastName: 'Messi',
-    age: 35,
-    team: 'Argentina'
-  }]
+   /**
+    * Retorna la lista de jugadores registrados
+    */
+   list(): Player[];
 
-  public listar() : Player[] {
-    return this.player
-  }
+   /**
+    * Crea un nuevo jugador
+    * @param player datos del nuevo jugador
+    * @return Nuevo jugador
+    */
+   create(player: Player): Player;
 
-  public crear(jugador: Player): Player {
-    this.player.push(jugador);
-    return jugador;
-  }
+   /**
+    * Actualiza datos de jugador
+    * @param id Identificador único del jugador
+    * @param player datos del jugador
+    * @return Jugador modificado
+    */
+   update(id: number, player: Player): Player
 
-  public modificar(id: number, jugador: Player): Player {
-      this.player[id] = jugador
-      return this.player[id];
-  }
+   /**
+    * Eliminar un jugador
+    * @param id Identificador único del jugador
+    * @return True si eliminó al jugador
+    */
+   delete(id: number): boolean
 
-  public eliminar(id: number): boolean {
-    const totalJugadoresAntes = this.player.length;
-    this.player = this.player.filter((val, index) => index != id);
-    if(totalJugadoresAntes == this.player.length){
-      return false;
-    }
-    else{
-      return true;
-    }
-  }
-
-   public cambiarEdad(id: number, edad: number): Player {
-      this.player[id].age = edad;
-      return this.player[id];
-   }
-
+   /**
+    * Cambia la edad de un jugador
+    * @param id Identificador único del jugador
+    * @param age nuevo valor de edad 
+    */
+   updateAge(id: number, age: number): Player
 }
