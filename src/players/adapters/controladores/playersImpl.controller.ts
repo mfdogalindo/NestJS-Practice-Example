@@ -3,7 +3,7 @@ import { PlayerService } from '../../domain/services/player.service';
 
 import {Player} from '../../domain/models/player.model';
 import { PlayerController } from './players.controller';
-import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 const errReturn = (e: Error, message: string) => {
   return {
@@ -26,7 +26,7 @@ export class PlayerControllerImpl implements PlayerController {
     }
   }
 
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() datos: Player) {
     try{
