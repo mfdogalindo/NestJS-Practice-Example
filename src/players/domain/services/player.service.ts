@@ -20,19 +20,19 @@ export interface PlayerService {
    * @param player datos del jugador
    * @return Jugador modificado
    */
-  update(id: number, playerData: PlayerEntity): Promise<UpdateResult>;
+  update(id: string, playerData: PlayerEntity): Promise<UpdateResult>;
 
   /**
    * Eliminar un jugador
    * @param id Identificador único del jugador
    * @return True si eliminó al jugador
    */
-  delete(id: number): Promise<boolean>;
+  delete(id: string): Promise<boolean>;
 
   /**
    * Cambia la edad de un jugador
    * @param id Identificador único del jugador
    * @param age nuevo valor de edad
    */
-  updateAge(id: number, edad: number): Promise<UpdateResult>;
+  // updateAge(id: number, edad: number): Promise<UpdateResult>;
 }

@@ -49,7 +49,7 @@ export class PlayerControllerImpl implements PlayerController {
   }
 
   @Put(':id')
-  update(@Body() datos: PlayerEntity, @Param('id') id: number) {
+  update(@Body() datos: PlayerEntity, @Param('id') id: string) {
     try {
       return this.jugadorService.update(id, datos);
     } catch (e) {
@@ -58,7 +58,7 @@ export class PlayerControllerImpl implements PlayerController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id') id: string) {
     try {
       return this.jugadorService.delete(id);
     } catch (e) {
@@ -66,12 +66,12 @@ export class PlayerControllerImpl implements PlayerController {
     }
   }
 
-  @Patch(':id/edad/:edad')
-  updateAge(@Param('id') id: number, @Param('edad') edad: number) {
-    try {
-      return this.jugadorService.updateAge(id, edad);
-    } catch (e) {
-      return errReturn(e, 'Error al modificar edad del jugador');
-    }
-  }
+  // @Patch(':id/edad/:edad')
+  // updateAge(@Param('id') id: number, @Param('edad') edad: number) {
+  //   try {
+  //     return this.jugadorService.updateAge(id, edad);
+  //   } catch (e) {
+  //     return errReturn(e, 'Error al modificar edad del jugador');
+  //   }
+  // }
 }

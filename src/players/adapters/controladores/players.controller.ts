@@ -17,18 +17,18 @@ export interface PlayerController {
    * @param datos Objeto con datos de jugador
    * @param id Identificador único del jugador
    */
-  update(datos: PlayerEntity, id: number);
+  update(datos: PlayerEntity, id: string);
 
   /**
    * Elimina un jugador
    * @param id Identificador único del jugador
    */
-  delete(id: number);
+  delete(id: string);
 
   /**
    * Cambia la edad de un jugador
    * @param id Identificador único del jugador
    * @param edad Edad del jugador
    */
-  updateAge(id: number, edad: number);
+  // updateAge(id: number, edad: number);
 }

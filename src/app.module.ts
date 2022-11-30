@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PlayerEntity } from './players/domain/entities/player.entity';
+import { PlayerRepositoryImpl } from './players/adapters/repositories/playersImpl.repository';
 
 @Module({
   imports: [
@@ -26,6 +27,10 @@ import { PlayerEntity } from './players/domain/entities/player.entity';
     {
       provide: 'PlayerService',
       useClass: PlayerServiceImpl,
+    },
+    {
+      provide: 'PlayerRepository',
+      useClass: PlayerRepositoryImpl,
     },
   ],
 })
