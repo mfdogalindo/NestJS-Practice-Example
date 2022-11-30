@@ -1,5 +1,5 @@
 const express = require('express');
-const createServer = require('./dist/main').default;
+const createServer = require('./dist/index').default;
 
 const app = express();
 let nest;

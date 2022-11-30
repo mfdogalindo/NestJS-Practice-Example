@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { PlayerRepository } from 'src/players/adapters/repositories/players.repository';
-import { InsertResult, MongoRepository, UpdateResult } from 'typeorm';
+import { InsertResult, UpdateResult } from 'typeorm';
 import { PlayerEntity } from '../entities/player.entity';
 import { PlayerService } from './player.service';
 
@@ -9,14 +8,9 @@ import { PlayerService } from './player.service';
 export class PlayerServiceImpl implements PlayerService {
   @Inject('PlayerRepository') private readonly repository: PlayerRepository;
 
-  /* 
-  constructor(
-    @InjectRepository(PlayerEntity)
-    private readonly repository: MongoRepository<PlayerEntity>,
-  ) {}
-*/
   public async list(): Promise<PlayerEntity[]> {
-    return await this.repository.findAll();
+    const result = await this.repository.findAll();
+    return result;
   }
 
   public async create(playerData: PlayerEntity): Promise<InsertResult> {
